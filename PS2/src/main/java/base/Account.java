@@ -17,27 +17,30 @@ public class Account {
 	
 	public double getMonthlyInterestRate(){//returns the monthly interest rate
 		 
-		return (annualInterestRate/12);
+		return (getAnnualInterestRate()/12);
 	}
 	
 	
 	
 	public void withdraw(double withdrawAmount) throws OverDraftException{
-		if((balance - withdrawAmount)>=0)
+		
+			if((getBalance() - withdrawAmount)>=0)
 		{
 			 balance -= withdrawAmount;
-			 
+			  
 		}
 		
 		else// if there isn't enough dough, throw an exception
 		{
-			double difference = withdrawAmount - balance;
+			double difference =( withdrawAmount - balance);
 			throw new OverDraftException(difference);
-		}
 			
-	
-		
+		}
 	}
+			
+		
+		
+	  
 	
 	/*
 	 * add money to the account
@@ -73,7 +76,7 @@ public class Account {
 	}
 	public void setAnnualInterestRate(double annualInterestRate) {
 		this.annualInterestRate = annualInterestRate;
-	}
+	} 
 	
 
 	public Date getDateCreated() {
@@ -97,7 +100,7 @@ public class Account {
 		this.id = id;
 		this.balance = balance;
 		this.annualInterestRate = annualInterestRate;
-		this.dateCreated = getDateCreated();
+		this.dateCreated = new Date();
 	}
 		
 
